@@ -8,10 +8,6 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
-.custom-header {
-    border-bottom: 1px solid white;
-}
-
 #sidebar {
     visibility: visible;
     opacity: 1;
@@ -25,11 +21,14 @@ body {
 /* Animación de deslizamiento para el sidebar */
 #sidebar {
     transition: transform 0.3s ease-in-out;
+    transform: translateX(-100%); /* Inicio fuera de la pantalla a la izquierda */
 }
 
+/* Mostrar el sidebar al desplazarlo a la posición original (desde la izquierda) */
 #sidebar.open {
-    transform: translateX(0);
+    transform: translateX(0); /* Sidebar visible */
 }
+
 
 /* Clase para aplicar la transición suave */
 .transition-all {
@@ -149,19 +148,19 @@ body {
 
 /* Estilos para los testimonios */
 .testimonial-slide {
-    padding: 20px;
+    padding: 40px;
     display: flex;
     justify-content: center;
 }
 
 .testimonial-slide .bg-white {
-    padding: 30px;
+    padding: 20px 50px;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .testimonial-slide p {
-    font-size: 1rem;
+    font-size: 1.1rem;
 }
 
 .testimonial-slide .font-semibold {
