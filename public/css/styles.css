@@ -1,0 +1,364 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+#sidebar {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.sidebar-custom {
+    box-shadow: 0px 0px 10px 5px #ffbc98;
+}
+
+/* Animación de deslizamiento para el sidebar */
+#sidebar {
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(-100%);
+    /* Inicio fuera de la pantalla a la izquierda */
+}
+
+/* Mostrar el sidebar al desplazarlo a la posición original (desde la izquierda) */
+#sidebar.open {
+    transform: translateX(0);
+    /* Sidebar visible */
+}
+
+
+/* Clase para aplicar la transición suave */
+.transition-all {
+    transition: transform 0.3s ease;
+    /* Solo animamos la propiedad transform */
+}
+
+/* Desplazar el sidebar completamente fuera de la pantalla (desde la izquierda) */
+.translate-x-full {
+    transform: translateX(-100%);
+    /* Sidebar fuera de la pantalla desde la izquierda */
+}
+
+/* Mostrar el sidebar al desplazarlo a la posición original (desde la izquierda) */
+.translate-x-0 {
+    transform: translateX(0);
+    /* Sidebar visible */
+}
+
+#hero {
+    max-width: 90vw;
+}
+
+/* Transición suave para el menú desplegable */
+#nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+}
+
+#nav.open {
+    transform: translateX(0);
+}
+
+#nav ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+#nav li {
+    margin: 15px 0;
+}
+
+#nav li a {
+    font-size: 1.5rem;
+}
+
+/* Buttons */
+
+.button:hover {
+    transition: all 0.3s ease;
+    transform: scale(1.1);
+}
+
+/* Cards */
+
+.cards:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/*  Reseña slider */
+
+#testimonials {
+    background-color: #f8f9fa;
+}
+
+#slider-wrapper {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+    /* Asegura que el contenedor ocupe todo el ancho */
+}
+
+.testimonial-slide {
+    flex: 0 0 100%;
+    /* Asegura que cada testimonio ocupe el 100% del ancho */
+    box-sizing: border-box;
+    /* Asegura que no haya desbordamientos por padding */
+}
+
+
+.testimonial-slide .bg-white {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-slide p {
+    font-size: 1rem;
+    color: #333;
+}
+
+.font-semibold {
+    font-weight: 600;
+}
+
+.text-sm {
+    color: #999;
+}
+
+.slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    color: #333;
+    cursor: pointer;
+    z-index: 10;
+}
+
+#prev-btn {
+    left: 10px;
+}
+
+#next-btn {
+    right: 10px;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .testimonial-slide {
+        flex: 0 0 80%;
+    }
+}
+
+@media (max-width: 480px) {
+    .testimonial-slide {
+        flex: 0 0 100%;
+    }
+}
+
+
+
+
+/* Estilo del modal */
+#login-modal {
+    display: none;
+    /* Ocultar inicialmente */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    /* Fondo oscuro semi-transparente */
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Animación para la aparición del modal */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Estilo del cuadro modal */
+#login-modal .modal-content {
+    background: linear-gradient(135deg, #ff7b00, #ff3300);
+    /* Degradado vibrante con colores cálidos */
+    padding: 60px 50px;
+    border-radius: 30px;
+    /* Bordes más redondeados */
+    width: 80vw;
+    /* Tamaño más grande */
+    max-width: 600px;
+    /* Máximo ancho */
+    max-height: 600px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    /* Sombra grande */
+    transform: scale(1.1);
+    animation: slideUp 0.5s ease-in-out;
+}
+
+/* Animación de deslizamiento */
+@keyframes slideUp {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Título del modal */
+#login-modal .modal-content h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Texto secundario para el enlace */
+#login-modal .modal-content p {
+    font-size: 1.1rem;
+    color: #fff;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Botón de cerrar */
+#login-modal .close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+#login-modal .close-btn:hover {
+    transform: scale(1.2);
+}
+
+/* Estilo de los formularios */
+#login-form {
+    display: block;
+    margin-top: 20px;
+}
+
+/* Campos de entrada */
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 14px;
+    margin: 12px 0;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 1.1rem;
+    transition: border-color 0.3s ease;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: #ff3300;
+    /* Resaltar el borde en rojo cálido */
+    outline: none;
+}
+
+/* Botón de submit */
+input[type="submit"] {
+    width: 100%;
+    padding: 16px;
+    margin-top: 20px;
+    background-color: #ff3300;
+    /* Rojo cálido */
+    border: none;
+    color: white;
+    font-size: 1.3rem;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #ff7b00;
+    /* Cambio de color al pasar el ratón */
+    transform: translateY(-2px);
+    /* Efecto de elevación */
+}
+
+/* Enlace de alternar entre login y registro */
+#login-toggle {
+    display: block;
+    text-align: center;
+    color: #fff;
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+#login-toggle:hover {
+    color: #ff7b00;
+    text-decoration: underline;
+}
+
+
+
+/* Responsividad */
+@media screen and (max-width: 768px) {
+    .testimonial-slide {
+        padding: 10px;
+    }
+
+    .testimonial-slide .bg-white {
+        padding: 20px;
+    }
+
+    .left-arrow,
+    .right-arrow {
+        left: 5px;
+        right: 5px;
+    }
+
+    .arrow-line {
+        width: 15px;
+        height: 3px;
+    }
+
+    .arrow-head {
+        width: 10px;
+        height: 10px;
+    }
+}
