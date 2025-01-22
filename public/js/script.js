@@ -1,4 +1,4 @@
-// Obtén los elementos
+
 const openBtn = document.getElementById('open-btn');
 const closeBtn = document.getElementById('close-btn');
 const sidebar = document.getElementById('sidebar');
@@ -79,3 +79,52 @@ window.addEventListener("click", function(event) {
         cerrarModal();
     }
 });
+
+
+// Manejar el envío del formulario
+document.getElementById('login-form').addEventListener('submit', async function(e) {
+    e.preventDefault(); // Evita que el formulario se envíe de la manera tradicional
+
+    // Obtener los valores de los campos de email y password
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    // Hacer la solicitud POST a la API de login
+    try {
+        const response = await fetch('/api/login/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json', // Se espera JSON en el backend
+            },
+            body: JSON.stringify({
+                email: email,
+                password: password
+            })
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            // Login exitoso, puedes guardar el token JWT en el almacenamiento local
+            localStorage.setItem('token', data.access_token); // Guardar token en el localStorage
+            window.location.href = '/home/'; // Redirigir a la página principal
+        } else {
+            // Si la autenticación falla, muestra un mensaje de error
+            alert(data.message || 'Error al iniciar sesión');
+        }
+    } catch (error) {
+        console.error('Error en la solicitud de login:', error);
+        alert('Hubo un problema con la solicitud, por favor intenta nuevamente.');
+    }
+
+    const token = localStorage.getItem('token'); // Obtener el token almacenado
+
+const response = await fetch('/api/protected/', {
+    method: 'GET',
+    headers: {
+        'Authorization': `Bearer ${token}`  // Enviar el token en el encabezado Authorization
+    }
+});
+
+});
+

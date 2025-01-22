@@ -12,7 +12,8 @@
     <!-- Enlace a tu archivo de CSS -->
     <link rel="stylesheet" href="/public/css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="64x64" href="/assets/img/android-chrome-192x192.png">
+    <link rel="manifest" href="/site.webmanifest">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
 </head>
@@ -255,22 +256,25 @@
         <i class="fas fa-arrow-right"></i> Únete
     </button>
 
-    <div id="login-modal">
-        <div class="modal-content">
-            <span id="login-close" class="close-btn">&times;</span>
-            <h2>Iniciar Sesión</h2>
-            <form id="login-form" method="post">
-                <input type="email" name="email" placeholder="Correo Electrónico" required>
-                <input type="password" name="password" placeholder="Contraseña" required>
-                <input type="submit" value="Iniciar Sesión">
-            </form>
-            <p>¿No tienes cuenta? <a href="#" id="login-toggle">Regístrate</a></p>
-        </div>
+<!-- modal login popup -->
+
+<div id="login-modal">
+    <div class="modal-content">
+        <span id="login-close" class="close-btn">&times;</span>
+        <h2>Iniciar Sesión</h2>
+        <form id="login-form">
+            <input type="email" name="email" id="email" placeholder="Correo Electrónico" required>
+            <input type="password" name="password" id="password" placeholder="Contraseña" required>
+            <input type="submit" value="Iniciar Sesión">
+        </form>
+        <p>¿No tienes cuenta? <a href="#" id="login-toggle">Regístrate</a></p>
     </div>
+</div>
+
 
 
     <!-- Script JS -->
-    <script src="/public/js/script.js"></script>
+    <script type="module" src="/public/js/script.js"></script>
 </body>
 
 </html>
